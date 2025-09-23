@@ -90,7 +90,7 @@
                 </div>
                 
                 <button type="button" class="btn btn-add" id="open-camera">
-                    <i class="fas fa-camera"></i> Prendre une photo
+                    <i class="fas fa-camera"></i> Prendre des photos
                 </button>
             </div>
             
