@@ -202,7 +202,7 @@
             }
         });
         
-        // Capturer une photo
+        // Capturer la photo
         capturePhotoButton.addEventListener('click', function() {
             const canvas = document.createElement('canvas');
             canvas.width = videoElement.videoWidth;
@@ -210,18 +210,18 @@
             const context = canvas.getContext('2d');
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
             
-            // Convertir en base64 pour l'envoi
+           
             const imageData = canvas.toDataURL('image/jpeg');
             addPhotoFromData(imageData);
             
-            // Fermer la caméra
+            
             cameraModal.style.display = 'none';
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
             }
         });
         
-        // Obtenir la localisation de l'utilisateur
+        
         function getLocation() {
             if (navigator.geolocation) {
                 locationStatus.textContent = "Localisation en cours...";
@@ -234,7 +234,7 @@
                             accuracy: position.coords.accuracy || null
                         };
                         
-                        // Mise à jour des champs cachés
+                        
                         document.getElementById('latitude-input').value = userLocation.latitude;
                         document.getElementById('longitude-input').value = userLocation.longitude;
                         document.getElementById('altitude-input').value = userLocation.altitude;
@@ -252,7 +252,7 @@
                         console.error("Erreur de géolocalisation: ", error);
                         locationStatus.innerHTML = `<span style="color: #ef4444;"><i class="fas fa-exclamation-triangle"></i> Impossible d'obtenir la localisation: ${error.message}</span>`;
                         
-                        // Mettre des valeurs par défaut ou null
+                      
                         document.getElementById('latitude-input').value = '';
                         document.getElementById('longitude-input').value = '';
                         document.getElementById('altitude-input').value = '';
@@ -269,14 +269,14 @@
             }
         }
         
-        // Obtenir la localisation au chargement de la page
+       
         getLocation();
         
-        // Gestion de la soumission du formulaire
+       
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validation basique
+            
             const commune = document.getElementById('commune').value;
             const lieu = document.getElementById('lieu').value;
             
@@ -291,7 +291,7 @@
                 }
             }
             
-            // Afficher la confirmation SweetAlert2
+           
             Swal.fire({
                 title: 'Confirmation',
                 text: "Êtes-vous sûr de vouloir envoyer ce rapport d'accident?",
@@ -303,7 +303,7 @@
                 cancelButtonText: 'Annuler'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Soumettre le formulaire
+                  
                     form.submit();
                 }
             });
